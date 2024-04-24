@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import brandlogo from "../images/brandlogo.png";
+
 import logo from "../images/logo.png";
 import { useState } from "react";
 import axios from "axios";
 
-function Header() {
+function Header(props) {
+  let { page } = props;
   let initialUserVal = {
     f_name: "",
     l_name: "",
@@ -265,32 +266,41 @@ function Header() {
                   Registaion
                 </button>
               </div>
-              <button
-                className="btn btn-primary"
-                data-bs-target="#exampleModalToggle1"
-                data-bs-toggle="modal"
-              >
-                Sign In
-              </button>
+              <button className="btn btn-primary">Sign In</button>
             </div>
           </div>
         </div>
       </div>
       <div className="row justify-content-center">
-        {/* <Header bgColor="bg-danger" />  */}
-        <div className="row bg-danger justify-content-center">
-          <div className="col-10 d-flex justify-content-between py-2">
-            {/* <p role="button" className="m-0 brand" onClick={()=>navigate('/')}>m</p> */}
-            <div>
-              <img
-                style={{ borderRadius: "50%" }}
-                src={logo}
-                width={"170px"}
-                height={"40px"}
-                alt="logoimg"
-                onClick={() => navigate("/")}
-              />
-            </div>
+        <div
+          className={
+            page == "home"
+              ? "row justify-content-center"
+              : "row bg-danger justify-content-center"
+          }
+        >
+          <div
+            className={
+              page == "home"
+                ? "col-12 d-flex justify-content-between py-2"
+                : "col-10 d-flex justify-content-between py-2"
+            }
+          >
+            {page == "home" ? (
+              <div></div>
+            ) : (
+              <div>
+                <img
+                  style={{ borderRadius: "50%" }}
+                  src={logo}
+                  width={"170px"}
+                  height={"40px"}
+                  alt="logoimg"
+                  onClick={() => navigate("/")}
+                />
+              </div>
+            )}
+
             <div>
               <button
                 className="btn text-white me-2"

@@ -26,7 +26,7 @@ const UserController = {
   userLogin: async (request, response) => {
     let { userName, password } = request.body;
     let isUserExist = await UserModel.findOne({
-      username: userName,
+      email: userName,
       password: password,
     });
     if (isUserExist) {
