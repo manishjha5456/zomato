@@ -10,7 +10,7 @@ const UserController = {
       password: user_details.password,
       address: user_details.address,
     };
-    let result = await UserModel.findOne({ mobile: user_details.mobile });
+    let result = await UserModel.findOne({ email: user_details.email });
     if (result) {
       response.send({
         status: false,
@@ -25,10 +25,13 @@ const UserController = {
   },
   userLogin: async (request, response) => {
     let { userName, password } = request.body;
-    let isUserExist = await UserModel.findOne({
-      email: userName,
-      password: password,
-    });
+    let isUserExist = await UserModel.findOne(
+      {
+        email: userName,
+        password: password,
+      },
+      { password: 0 }
+    );
     if (isUserExist) {
       response.send({
         status: true,

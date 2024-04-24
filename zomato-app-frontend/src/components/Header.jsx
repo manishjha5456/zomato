@@ -32,12 +32,14 @@ function Header(props) {
       //confirm_password: newUser.confirm_password,
       address: newUser.address,
     };
-    console.log(sendData);
+    //console.log(sendData);
     let url = "http://localhost:3040/user-detail-saver";
     let { data } = await axios.post(url, sendData);
-    console.log(data);
+    //console.log(data);
+
     if (data.status === true) {
       alert("registered successfully");
+      window.location.reload();
     } else {
       alert(data.message);
     }
@@ -47,13 +49,12 @@ function Header(props) {
       email: newUser.email,
       password: newUser.password,
     };
-    console.log(sendData);
+    // console.log(sendData);
     let url = "http://localhost:3040/user-login";
     let { data } = await axios.post(url, sendData);
     console.log(data);
     if (data.status === true) {
       alert("login successfully");
-      navigate("/home");
     } else {
       alert(data.message);
     }
@@ -205,8 +206,8 @@ function Header(props) {
               </div>
               <button
                 className="btn btn-primary"
-                data-bs-target="#exampleModalToggle3"
-                data-bs-toggle="modal"
+                data-bs-dismiss="modal"
+                aria-label="Close"
                 onClick={() => saveNewUserData()}
               >
                 Submit
@@ -242,6 +243,9 @@ function Header(props) {
                   className="form-control"
                   id="floatingInput"
                   placeholder="name@example.com"
+                  onChange={setUserData}
+                  name="email"
+                  value={newUser.email}
                 />
                 <label htmlFor="floatingInput">Email address</label>
               </div>
@@ -251,6 +255,9 @@ function Header(props) {
                   className="form-control"
                   id="floatingPassword"
                   placeholder="Password"
+                  onChange={setUserData}
+                  name="password"
+                  value={newUser.password}
                 />
                 <label htmlFor="floatingPassword">Password</label>
               </div>
@@ -266,7 +273,9 @@ function Header(props) {
                   Registaion
                 </button>
               </div>
-              <button className="btn btn-primary">Sign In</button>
+              <button className="btn btn-primary" onClick={() => loginUser()}>
+                Sign In
+              </button>
             </div>
           </div>
         </div>

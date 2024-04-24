@@ -260,7 +260,12 @@ function Restaurant() {
                   >
                     Back
                   </button>
-                  <button className="btn btn-success" onClick={paymentGetway}>
+                  <button
+                    className="btn btn-success"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    onClick={paymentGetway}
+                  >
                     PROCEED
                   </button>
                 </div>

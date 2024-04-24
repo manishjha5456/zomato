@@ -80,8 +80,8 @@ function Home() {
           {/* <p role="button" className="brand-name fw-bold my-lg-2 mb-2">m</p> */}
           <div>
             <img
-              className="border border-1 border-white"
-              style={{ borderRadius: "15px", marginTop: "70px" }}
+              className=""
+              style={{ marginTop: "70px" }}
               src={logoimg}
               width={"400px"}
               height={"100px"}
