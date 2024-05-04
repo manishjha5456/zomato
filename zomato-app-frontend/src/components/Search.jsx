@@ -135,7 +135,7 @@ function Search() {
                     className="form-check-input"
                     value={2}
                   />
-                  <label htmlFor="" className="form-check-label ms-1">
+                  <label htmlFor="" className="form-check-label ms-1" >
                     South Indian
                   </label>
                 </div>
